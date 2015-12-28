@@ -1,0 +1,60 @@
+<html>
+    
+    <head>
+        <title>
+            hi
+        </title>
+    </head>
+    
+    <body>
+        <script type="text/javascript">
+            function Check(ele, iface) {
+
+                var inputs = document.getElementsByTagName("input");
+                for (var i = 0; i < inputs.length; i++) {
+                    if (inputs[i].type == "text" && iface == 0 && inputs[i].name.indexOf("eth0") >= 0) {
+                        if (ele.checked) {
+                            inputs[i].disabled = true;
+                        } else {
+                            inputs[i].disabled = false;
+                        }
+                    }
+                    if (inputs[i].type == "text" && iface == 1 && inputs[i].name.indexOf("eth1") >= 0) {
+                        if (ele.checked) {
+                            inputs[i].disabled = true;
+                        } else {
+                            inputs[i].disabled = false;
+                        }
+                    }
+                }
+            }
+        </script>
+        <h1>
+            eth0
+        </h1>
+        <input type="checkbox" onclick="Check(this, 0)" />
+        <br>
+        IP:
+        <input type="text" name="ip_eth0" id="ip_eth0" />
+        <br>
+        MASK:
+        <input type="text" name="mask_eth0" id="mask_eth0" />
+        <br>
+        GATEWAY:
+        <input type="text" name="gw_eth0" id="gw_eth0" />
+        <h1>
+            eth1
+        </h1>
+        <input type="checkbox" onclick="Check(this, 1)" />
+        <br>
+        IP:
+        <input type="text" name="ip_eth1" id="ip_eth1" />
+        <br>
+        MASK:
+        <input type="text" name="mask_eth1" id="mask_eth1" />
+        <br>
+        GATEWAY:
+        <input type="text" name="gw_eth1" id="gw_eth1" />
+    </body>
+
+</html>

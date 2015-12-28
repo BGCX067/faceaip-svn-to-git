@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-Transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TSHome主机</title>
+<meta name="keywords" content="智能,家居,主机,系统,TSHome" />
+<link rel="stylesheet" href="../css/main.css"  type="text/css"/>
+<script type="text/javascript" language="javascript" src="../js/jquery-1.7.1.js"></script>
+<!--<script type="text/javascript" language="javascript" src="../js/home_serial_port.js"></script>-->
+<script type="text/javascript" language="javascript" >
+	/**
+ *主机串口信息
+ */
+//求数组的最大值
+Array.prototype.max = function() {  
+ var max = this[0];
+ var len = this.length; 
+ for (var i = 1; i < len; i++){
+  if (parseInt(this[i]) > max) { 
+   max = this[i];   
+  } 
+ }   
+ return max;
+} 
+//修改确定删除操作
+function serial_port_operate(){
+	//修改
+	$(".serial_port_info table.table_serial_port input.serial_port_delete_"+serial_port_delete_no).parent().find("input.revise_btn").click(function(){
+		//显示隐藏
+		//$(this).parent().parent().find("span.serial_description").hide();
+		$(this).parent().parent().find("span.baud_rate").hide();
+		$(this).parent().parent().find("span.data_bit").hide();
+		$(this).parent().parent().find("span.stop_bit").hide();
+		$(this).parent().parent().find("span.verify").hide();
+		$(this).parent().parent().find("span.serial_name").hide();
+		$(this).hide();
+		//$(this).parent().parent().find("input.serial_description_revise").show();
+		$(this).parent().parent().find("input.baud_rate_revise").show();
+		$(this).parent().parent().find("input.data_bit_revise").show();
+		$(this).parent().parent().find("input.stop_bit_revise").show();
+		$(this).parent().parent().find("input.verify_revise").show();
+		$(this).parent().parent().find("input.serial_name_revise").show();
+		$(this).parent().parent().find("input.ok_btn").show();	
+		//赋值
+		//$(this).parent().parent().find("input.serial_description_revise").val($(this).parent().parent().find("span.serial_description").html());
+		$(this).parent().parent().find("input.baud_rate_revise").val($(this).parent().parent().find("span.baud_rate").html());
+		$(this).parent().parent().find("input.data_bit_revise").val($(this).parent().parent().find("span.data_bit").html());
+		$(this).parent().parent().find("input.stop_bit_revise").val($(this).parent().parent().find("span.stop_bit").html());
+		$(this).parent().parent().find("input.verify_revise").val($(this).parent().parent().find("span.verify").html());
+		$(this).parent().parent().find("input.serial_name_revise").val($(this).parent().parent().find("span.serial_name").html());
+	});
+	//确定
+	$(".serial_port_info table.table_serial_port input.serial_port_delete_"+serial_port_delete_no).parent().find("input.ok_btn").click(function(){
+		//显示隐藏
+		//$(this).parent().parent().find("input.serial_description_revise").hide();
+		$(this).parent().parent().find("input.baud_rate_revise").hide();
+		$(this).parent().parent().find("input.data_bit_revise").hide();
+		$(this).parent().parent().find("input.stop_bit_revise").hide();
+		$(this).parent().parent().find("input.verify_revise").hide();
+		$(this).parent().parent().find("input.serial_name_revise").hide();
+		$(this).hide();
+		//$(this).parent().parent().find("span.serial_description").show();
+		$(this).parent().parent().find("span.baud_rate").show();
+		$(this).parent().parent().find("span.data_bit").show();
+		$(this).parent().parent().find("span.stop_bit").show();
+		$(this).parent().parent().find("span.verify").show();
+		$(this).parent().parent().find("span.serial_name").show();
+		$(this).parent().parent().find("input.revise_btn").show();	
+		//赋值
+		//$(this).parent().parent().find("span.serial_description").html($(this).parent().parent().find("input.serial_description_revise").val());
+		$(this).parent().parent().find("span.baud_rate").html($(this).parent().parent().find("input.baud_rate_revise").val());
+		$(this).parent().parent().find("span.data_bit").html($(this).parent().parent().find("input.data_bit_revise").val());
+		$(this).parent().parent().find("span.stop_bit").html($(this).parent().parent().find("input.stop_bit_revise").val());
+		$(this).parent().parent().find("span.verify").html($(this).parent().parent().find("input.verify_revise").val());
+		$(this).parent().parent().find("span.serial_name").html($(this).parent().parent().find("input.serial_name_revise").val());
+	});
+	//删除
+	$(".serial_port_info table.table_serial_port input.serial_port_delete_"+serial_port_delete_no).click(function(){
+		$(this).parent().parent().remove();
+		//id
+		//var id=$(this).parent().parent().find("span.serial_port_id").html();
+	});
+}
+var serial_port_delete_no=0;//声明主机串口信息列表删除按钮编号
+function serial_port_list(parameter){
+	if(parameter!=null){
+		for(i=0;i<parameter.length;i++){
+			var id=parameter[i].id;//id
+			//var description=parameter[i].description;//描述
+			var baud_rate=parameter[i].baud_rate;//波特率
+			var data_bit=parameter[i].data_bit;//数据位
+			var stop_bit=parameter[i].stop_bit;//停止位
+			var verify=parameter[i].verify;//校验
+			var serial_name=parameter[i].serial_name;//串口名
+			$(".serial_port_info table.table_serial_port").append('<tr><td width="41"><span class="serial_port_id">'+id+'</span></td><td width="91" align="center"><span class="baud_rate">'+baud_rate+'</span><input type="text" class="baud_rate_revise" style="display:none"/></td><td width="91" align="center"><span class="data_bit">'+data_bit+'</span><input type="text" class="data_bit_revise" style="display:none"/></td><td width="91" align="center"><span class="stop_bit">'+stop_bit+'</span><input type="text" class="stop_bit_revise" style="display:none"/></td><td width="91" align="center"><span class="verify">'+verify+'</span><input type="text" class="verify_revise" style="display:none"/></td><td width="111" align="center"><span class="serial_name">'+serial_name+'</span><input type="text" class="serial_name_revise" style="display:none"/></td><td width="83" align="center"><input type="button" class="revise_btn"/><input type="button" class="ok_btn" style="display:none"/><input type="button" class="delete_btn serial_port_delete_'+(++serial_port_delete_no)+'"/></td><td width="110" align="center" valign="middle"><input name="serial_port_'+serial_port_delete_no+'" type="radio" value="" checked /> 打开 <input name="serial_port_'+serial_port_delete_no+'" type="radio" value=""/> 关闭</td></tr>');
+			//修改确定删除方法调用
+			serial_port_operate()
+		}
+	}
+}
+//从数据库取出数据，列出已有列表
+	var parameter=[{'id':'1','description':'6','baud_rate':'9600','data_bit':'8','stop_bit':'1.0','verify':'0','serial_name':'comm1','serial_port_switch':'打开'},{'id':'2','description':'7','baud_rate':'4800','data_bit':'7','stop_bit':'1.50','verify':'1','serial_name':'comm2','serial_port_switch':'打开'},]
+window.onload = function (){
+	serial_port_list(parameter);	
+}
+$(function(){
+	//新增按钮
+	$("input.new_add_btn").click(function(){
+		var serial_port_id;//新增ID号
+		//id值最大值加1
+		var num=[];
+		$(".serial_port_info table.table_serial_port span.serial_port_id").each(function(i,val){
+			num[i]=$(this).html();
+		});
+		if(num!=null){
+			serial_port_id=parseInt(num.max())+1;
+		}else{
+			serial_port_id=1;
+		}
+		if (num == '') {			serial_port_id = 1;		}		$(".serial_port_info table.table_serial_port").append('<tr><td width="41"><span class="serial_port_id">'+serial_port_id+'</span></td><td width="91" align="center"><span class="baud_rate" style="display:none"></span><input type="text" class="baud_rate_revise"/></td><td width="91" align="center"><span class="data_bit" style="display:none"></span><input type="text" class="data_bit_revise"/></td><td width="91" align="center"><span class="stop_bit" style="display:none"></span><input type="text" class="stop_bit_revise"/></td><td width="91" align="center"><span class="verify" style="display:none"></span><input type="text" class="verify_revise"/></td><td width="111" align="center"><span class="serial_name" style="display:none"></span><input type="text" class="serial_name_revise"/></td><td width="83" align="center"><input type="button" class="revise_btn" style="display:none"/><input type="button" class="ok_btn"/><input type="button" class="delete_btn serial_port_delete_'+(++serial_port_delete_no)+'"/></td><td width="110" align="center" valign="middle"><input name="serial_port_'+serial_port_delete_no+'" type="radio" value="" checked /> 打开 <input name="serial_port_'+serial_port_delete_no+'" type="radio" value=""/> 关闭</td></tr>');
+		//修改确定删除方法调用
+		serial_port_operate();
+	});
+	//保存按钮
+	$("input.save_btn").click(function(){
+alert('aaa');
+		//列表的保存
+		var serial_port_save=[];
+		$(".serial_port_info table.table_serial_port span.serial_port_id").each(function(i,val){
+			var id=$(this).html();//id
+			//var description=$(this).parent().parent().find("span.serial_description").html();
+			var baud_rate=$(this).parent().parent().find("span.baud_rate").html();
+			var data_bit=$(this).parent().parent().find("span.data_bit").html();
+			var stop_bit=$(this).parent().parent().find("span.stop_bit").html();
+			var verify=$(this).parent().parent().find("span.verify").html();
+			var serial_name=$(this).parent().parent().find("span.serial_name").html();
+			serial_port_save[i]={'id':id,'description':description,'baud_rate':baud_rate,'data_bit':data_bit,'stop_bit':stop_bit,'verify':verify,'serial_name':serial_name};
+alert('dddd');
+		});
+	});
+});
+</script>
+</head>
+<body>
+<!--主体 start-->
+<div class="containerbackground">
+	<div class="container_inner_back">
+		<div class="container">
+			<!--页头 start-->
+			<div class="head">
+				<span><a href="#"><img src="../images//logo_index.jpg" width="300" height="90"/></a></span>
+			</div>
+			<!--页头 end-->
+			<!--主体 start-->
+			<div class="center">
+				<!--导航 start-->
+				<div class="navigation">
+					<ul>
+						<li><a href="basic_control.html">基本控制</a></li>
+						<li class="selected"><a href="home_serial_port.html">主机串口信息</a></li>
+						<li><a href="pathway_info.html">通路信息维护</a></li>
+						<li><a href="device_link_access.html">设备连接通路信息维护</a></li>
+						<li><a href="infrared_device_pathway.html">红外设备通路配置</a></li>
+						<li><a href="log.html">日志信息</a></li>
+					</ul>
+				</div>
+				<!--导航 end-->
+				<!--内容 start-->
+				<div class="content">
+					<!--表格 start-->
+					<div class="home_serial_port_info">
+						<!--标题 start-->
+						<div class="title">
+							<table width="718" border="0" cellpadding="0" cellspacing="0" class="table_serial_port">
+							  <tr>
+								<th width="41">ID</th>
+								<th width="91">波特率</th>
+								<th width="91">数据位</th>
+								<th width="91">停止位</th>
+								<th width="91">校验</th>
+								<th width="111">串口名</th>
+								<th width="83">操作</th>
+								<th width="110">开关</th>
+							  </tr>
+							</table>
+						</div>
+						<!--标题 end-->
+						<!--内容 start-->
+						<div class="serial_port_info">
+							<table width="718" border="0" cellpadding="0" cellspacing="0" class="table_serial_port" style="border-top:0px">
+							</table>
+						</div>
+						<!--内容 end-->
+					</div>
+					<!--表格 end-->
+					<!--按钮 start-->
+					<div class="button"><input type="button" class="save_btn"/><input type="button" class="new_add_btn"/></div>
+					<!--按钮 end-->
+				</div>
+				<!--内容 end-->
+			</div>
+			<!--主体 end-->
+		</div>
+	</div>
+</div>
+<!--主体 end-->
+<!--底部 start-->
+<div class="footerbackground">
+	<div class="footer">南京天溯自动化-TSHome All Right Reserved!</div>
+</div>
+<!--底部 end-->
+</body>
+</html>
+

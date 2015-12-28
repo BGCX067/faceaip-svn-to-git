@@ -1,0 +1,14 @@
+ARM_GCC_PATH = /usr/local/arm/4.3.2/bin
+CC = ${ARM_GCC_PATH}/arm-linux-gcc
+AR = ${ARM_GCC_PATH}/arm-linux-ar
+INC = -I/opt/tshome-host/include/
+SQLITE_INC = -I/usr/local/arm/4.3.2/include
+OBJS = ts_log_tools.o
+LIB = libts_log_tools.a
+
+$(LIB) : $(OBJS)
+	${AR} rs $(LIB) $(OBJS)
+OBJS :
+	${CC} -Wall -c ts_log_tools.c
+clean:
+	rm -f $(LIB) $(OBJS)

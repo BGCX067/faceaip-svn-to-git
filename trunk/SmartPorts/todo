@@ -1,0 +1,5 @@
+2013-06-25 20:48:11
+	没有配置dns时， 打开失败
+	Connector[sms]:0 Host--sms.faceaip.com:10000 Open Failed.
+	-W-1372192611::../src/Ports/GeneralAgent.cpp(286)
+

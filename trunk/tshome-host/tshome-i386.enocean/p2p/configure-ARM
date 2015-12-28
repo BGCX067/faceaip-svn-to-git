@@ -1,0 +1,11 @@
+#!/bin/sh
+#./aconfigure $*
+
+ARM_GCC_PATH=/usr/local/arm/4.3.2/bin
+
+./aconfigure CC=$ARM_GCC_PATH/arm-linux-gcc CROSS_COMPILE=$ARM_GCC_PATH/arm-linux-  --prefix=/usr/local/arm/4.3.2 --host=arm-linux --target=arm-linux --build=i686-linux --disable-speex-aec --disable-speex-codec --disable-l16-codec --disable-g722-codec --disable-ilbc-codec --disable-ssl --disable-sound
+
+# Note:
+# if you're looking for the old configure script, it has been renamed
+# to configure-legacy
+

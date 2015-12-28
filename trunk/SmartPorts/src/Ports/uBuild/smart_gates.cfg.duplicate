@@ -1,0 +1,62 @@
+{
+   "ConsoleOverTcp" : [
+      {
+         "CheckPeriod" : 0,
+         "PeerTimeout" : 300,
+         "SPort" : 10023
+      }
+   ],
+   "DataBase" : [
+      {
+         "Database" : "remoteserver",
+         "Host" : "localhost",
+         "Passwd" : "tshomedb0607",
+         "Port" : 0,
+         "UserName" : "root"
+      }
+   ],
+   "General" : [
+      {
+         "LogFileName" : "general_agent.log",
+         "LogFilePath" : ".\/logs",
+         "MachineName" : "tshome-p2p-server",
+         "No" : 8,
+         "ProductID" : "987654321",
+         "SerialNumber" : "08620543482132792993272592000",
+         "Vendor" : "tiansu",
+         "Version" : "v 0.9.5",
+         "maxLogFile" : 6,
+         "maxLogSize" : 9437184,
+         "portConsoleOverTcp" : 19023
+      }
+   ],
+   "TcpSocketConnector" : [
+      {
+         "CheckPeriod" : 1,
+         "Host" : "sms.faceaip.com",
+         "Name" : "sms",
+         "Port" : 10000
+      }
+   ],
+   "TcpSocketServer" : [
+      {
+         "CheckPeriod" : 0,
+         "Name" : "sms",
+         "PeerTimeout" : 300,
+         "SPort" : 10000
+      }
+   ],
+   "WebService" : [
+      {
+         "WebServicePort" : 60088,
+         "controlDevice" : "\/WebService\/controlDevice",
+         "getDeviceStateList" : "\/WebService\/getDeviceStateList",
+         "heartbeat" : "\/WebService\/heartbeat",
+         "notifyUpdate" : "\/WebService\/notifyUpdate",
+         "registerURL" : "\/WebService\/registerURL",
+         "requestAuth" : "\/WebService\/requestAuth",
+         "requestAuthByHost" : "\/WebService\/requestAuthByHost",
+         "stopHostNetwork" : "\/WebService\/stopHostNetwork"
+      }
+   ]
+}

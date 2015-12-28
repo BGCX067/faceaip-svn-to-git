@@ -1,0 +1,34 @@
+#-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+#
+# Makefile.Defines.macosx - Z:\Dropbox\stock\trunk\code\project\libOdip\build\
+#
+# Copyright (C) 2012 WuJunjie(Joy.Woo@hotmail.com), All Rights Reserved.
+#
+# $Id: Makefile.Defines.macosx 1 2012-12-05 02:15:57 WuJunjie Exp $
+#
+# explain
+#      exp
+#
+# Update:
+#    2012-12-05 02:15 WuJunjie Create
+#
+#-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+CXX =		g++
+
+CFLAGS +=	-Wall -g $(INCLUDE) -MD -D_VERSION='"$(VERSION)"'
+
+# turn off optimization if compiling with gcc 2.9.x:
+#CFLAGS +=	-O0
+CFLAGS +=	-O2
+
+
+# uncomment depending on your operating system
+CFLAGS +=	-DMACOSX 
+CFLAGS +=	-D__DARWIN_UNIX03
+
+LIBS +=		\
+		-lssl -lcrypto \
+		-lpthread
+
+OBJS +=		Semaphore.o
+

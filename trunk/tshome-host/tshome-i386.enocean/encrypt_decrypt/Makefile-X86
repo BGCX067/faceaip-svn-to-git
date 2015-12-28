@@ -1,0 +1,14 @@
+objs=aes_tools.o rsa_tools.o md5_tools.o 
+obj=libts_encode.a  
+heads=-I/opt/tshome-host/include/
+
+$(obj) : aes_tools.o rsa_tools.o md5_tools.o
+	ar cr ${obj} aes_tools.o rsa_tools.o md5_tools.o 
+aes_tools.o :
+	gcc -Wall -c aes_tools.c ${heads}
+rsa_tools.o :
+	gcc -Wall -c rsa_tools.c ${heads}
+md5_tools.o :
+	gcc -Wall -c md5_tools.c ${heads}
+clean:
+	rm -f $(objs) $(obj)

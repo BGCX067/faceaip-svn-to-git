@@ -1,0 +1,15 @@
+#build upd
+ARM_CC=/usr/local/arm/4.3.2/bin/arm-linux-gcc
+ARM_INCLUDE=-I/usr/local/arm/4.3.2/include
+ARM_LIB=-L/usr/local/arm/4.3.2/lib
+TS_INCLUDE=-I/opt/tshome-host/include 
+TS_LIB=-L/opt/tshome-host/lib
+OBJ_DOWNLOAD=download
+OBJ_CONF=conf
+
+all:
+	${ARM_CC} -Wall -o ${OBJ_DOWNLOAD} download.c ${TS_INCLUDE} ${ARM_INCLUDE} ${ARM_LIB} ${TS_LIB} -lcurl -lts_log_tools
+	${ARM_CC} -Wall -o ${OBJ_CONF} conf.c ${TS_INCLUDE} ${ARM_INCLUDE} ${TS_LIB}  -lts_db_tools -lts_encode ${ARM_LIB} -lcrypto -lxml2 -lsqlite3 -lts_log_tools
+
+clean:
+	rm -rf ${OBJ_CONF} ${OBJ_DOWNLOAD}

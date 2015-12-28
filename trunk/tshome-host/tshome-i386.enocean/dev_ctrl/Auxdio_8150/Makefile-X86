@@ -1,0 +1,30 @@
+
+COMMON_PATH	= /opt/tshome-host/include
+COM_PATH	= ../ComProtocolManager
+
+INCLUDE		= -I$(COMMON_PATH) -I$(COM_PATH)
+
+CFLAGS		= -Wall -g3 $(INCLUDE)
+CPPFLAGS	= $(CFLAGS)
+
+MY_O		= Auxdio_8150.o $(COM_PATH)/IrcProtocolIface.o
+
+PROGS		= libAuxdio_8150.so
+PROGS_A		= libAuxdio_8150.a
+
+all:		$(PROGS)
+so:		$(PROGS)
+a:		$(PROGS_A)
+
+.cpp.o:
+	g++ $(CPPFLAGS) -o $@ -c $<
+
+libAuxdio_8150.so: $(MY_O)
+	g++ -shared -o $@ $(INCLUDE) $^
+
+libAuxdio_8150.a: $(MY_O)
+	ar cur $@ $^
+
+clean:
+	rm -rf *.o $(COM_PATH)/*.o *.so *.a
+

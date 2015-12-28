@@ -1,0 +1,13 @@
+MAKE_FOR = GatewayManager Epson_Esc_Vp21 Auxdio_8150 Backaudio_A61L Yodar_4028B ISTV AQM_1000
+
+#so: $(MAKE_FOR)
+#	@for dir in $?; do $(MAKE) -C $$dir so -f makefile-arm;done
+
+#a: $(MAKE_FOR)
+#	@for dir in $?; do $(MAKE) -C $$dir a;done
+
+all: $(MAKE_FOR)
+	@for dir in $?; do $(MAKE) -C $$dir -f Makefile-ARM;done
+
+clean:$(MAKE_FOR)
+	@for dir in $?; do $(MAKE) -C $$dir -f Makefile-ARM clean;done

@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<home id="100">
+	<t_camera sql="create TABLE t_camera([id] integer NOT NULL,[device] int NOT NULL,[cameraName] VARCHAR(40) NOT NULL,[c_ip] VARCHAR(50) NOT NULL,[c_port] INT(11) NOT NULL,[loginName] VARCHAR(255) NOT NULL,[loginPwd] VARCHAR(255) NOT NULL,[description] VARCHAR(255) DEFAULT NULL,[channel] INT(11) DEFAULT NULL,[ip2] VARCHAR(50) DEFAULT NULL,[port2] INT(11) DEFAULT NULL,[reserve1] VARCHAR(255) DEFAULT NULL,[reserve2] VARCHAR(255) DEFAULT NULL);">
+		<camera class="com.tiansu.tshome.server.domain.TCamera">
+			<id>1</id>
+			<device>1</device>
+			<cameraName>1</cameraName>
+			<c_ip>1</c_ip>
+			<c_port>1</c_port>
+			<loginName>1</loginName>
+			<loginPwd>1</loginPwd>
+			<description>1</description>
+			<channel>1</channel>
+			<ip2>1</ip2>
+			<port2>1</port2>
+		</camera>
+		
+		<camera class="com.tiansu.tshome.server.domain.TCamera">
+			<id>2</id>
+			<device>2</device>
+			<cameraName>2</cameraName>
+			<c_ip>2</c_ip>
+			<c_port>2</c_port>
+			<loginName>2</loginName>
+			<loginPwd>2</loginPwd>
+			<description>2</description>
+			<channel>2</channel>
+			<ip2>2</ip2>
+			<port2>2</port2>
+		</camera>
+	</t_camera>
+	
+	<t_ctrltype sql="create">
+		<ctrltype class="com.tiansu.tshome.server.domain.TCtrltype">
+			<id>1</id>
+			<name>1</name>
+		</ctrltype>
+	</t_ctrltype>
+	
+	<t_ctrlunit sql="create">
+		<ctrlunit class="com.tiansu.tshome.server.domain.TCtrlunit">
+			<id>1</id>
+			<ctrlType>1</ctrlType>
+			<device>1</device>
+		</ctrlunit>
+	</t_ctrlunit>
+	
+	<t_datatype sql="create">
+		<datatype class="com.tiansu.tshome.server.domain.TDatatype">
+			<id>1</id>
+			<dataType>1</dataType>
+		</datatype>
+	</t_datatype>
+	
+	<t_device sql="create">
+		<device class="com.tiansu.tshome.server.domain.TDevice">
+			<device_id>1</device_id>
+			<deviceName>1</deviceName>
+			<description>1</description>
+			<room>1</room>
+			<deviceType>1</deviceType>
+			<gateway>1</gateway>
+			<startRow>1</startRow>
+			<startColumn>1</startColumn>
+			<rowCount>1</rowCount>
+			<columnCount>1</columnCount>
+			<zone>1</zone>
+		</device>
+	</t_device>
+	
+	<t_gateway sql="create">
+		<gateway class="com.tiansu.tshome.server.domain.TGateway">
+			<id>1</id>
+			<gatewayName>1</gatewayName>
+			<gatewayIP>1</gatewayIP>
+			<gatewayPort>1</gatewayPort>
+			<description>1</description>
+			<gatewayType>1</gatewayType>
+		</gateway>
+	</t_gateway>
+	
+	<t_gatewaytype sql="create">
+		<gatewaytype class="com.tiansu.tshome.server.domain.TGatewaytype">
+			<id>1</id>
+			<gatewayType>1</gatewayType>
+		</gatewaytype>
+	</t_gatewaytype>
+	
+	<t_hardscene sql="create">
+		<hardscene class="com.tiansu.tshome.server.domain.THardscene">
+			<id>1</id>
+			<knxAddress>1</knxAddress>
+			<knxvalue>1</knxvalue>
+			<description>1</description>
+		</hardscene>
+	</t_hardscene>
+
+	<t_home sql="create">
+		<home class="com.tiansu.tshome.server.domain.THome">
+			<id>1</id>
+			<homeName>1</homeName>
+			<address>1</address>
+			<lastUpdateTime>1</lastUpdateTime>
+			<lastConfTIme>1</lastConfTIme>
+		</home>
+	</t_home>
+	
+	<t_knx_group sql="create">
+		<knx_group class="com.tiansu.tshome.server.domain.TKnxGroup">
+			<id>1</id>
+			<groupAddr>1</groupAddr>
+			<dataType>1</dataType>
+			<grpType>1</grpType>
+			<ctrlUnit>1</ctrlUnit>
+			<maValue>1</maValue>
+			<miValue>1</miValue>
+			<curData>1</curData>
+			<permission>1</permission>
+			<date>1</date>
+		</knx_group>
+	</t_knx_group>
+	
+	<t_knx_grouptype sql="create">
+		<knx_grouptype class="com.tiansu.tshome.server.domain.TKnxGrouptype">
+			<id>1</id>
+			<grouptype>1</grouptype>
+		</knx_grouptype>
+	</t_knx_grouptype>
+	
+	<t_permission_name sql="create">
+		<permission_name class="">
+			<id>1</id>
+			<name>1</name>
+		</permission_name>
+	</t_permission_name>
+	
+	<t_ref_device_scene sql="create">
+		<ref_device_scene class="com.tiansu.tshome.server.domain.TRefDeviceScene">
+			<id>1</id>
+			<device>1</device>
+			<scene>1</scene>
+		</ref_device_scene>
+	</t_ref_device_scene>
+	
+	<t_ref_device_serial sql="create">
+		<ref_device_scene class="">
+			<id>1</id>
+			<serial_id>1</serial_id>
+			<device>1</device>
+		</ref_device_scene>
+	</t_ref_device_serial>
+	
+	<t_ref_role_device sql="create">
+		<ref_role_device class="">
+			<id>1</id>
+			<role>1</role>
+			<device>1</device>
+			<permission_id>1</permission_id>
+		</ref_role_device>
+	</t_ref_role_device>
+	
+	<t_ref_role_system sql="create">
+		<ref_role_system class="com.tiansu.tshome.server.domain.TRoleService">
+			<id>1</id>
+			<role>1</role>
+			<permissions>1</permissions>
+		</ref_role_system>
+	</t_ref_role_system>
+	
+	<t_ref_user_role sql="create">
+		<ref_user_role class="">
+			<id>1</id>
+			<user>1</user>
+			<role>1</role>
+		</ref_user_role>
+	</t_ref_user_role>
+		
+	<t_remotectrl sql="create">
+		<remotectrl class="com.tiansu.tshome.server.domain.TRemotectrl">
+			<id>1</id>
+			<device>1</device>
+			<channel>1</channel>
+			<totalRows>1</totalRows>
+			<totalColumns>1</totalColumns>
+		</remotectrl>
+	</t_remotectrl>
+	
+	<t_remotectrl_key sql="create">
+		<remotectrl_key class="com.tiansu.tshome.server.domain.TRemotectrlKey">
+			<id>1</id>
+			<remoteCtrlID>1</remoteCtrlID>
+			<uniquecode>1</uniquecode>
+			<hasStudy>1</hasStudy>
+			<keyFunction>1</keyFunction>
+			<startRow>1</startRow>
+			<startColumn>1</startColumn>
+			<rowCount>1</rowCount>
+			<columnCount>1</columnCount>
+		</remotectrl_key>
+	</t_remotectrl_key>
+	
+	<t_role sql="create">
+		<role class="com.tiansu.tshome.server.domain.TRole">
+			<id>1</id>
+			<roleName>1</roleName>
+		</role>
+	</t_role>
+	
+	<t_room sql="create">
+		<room class="com.tiansu.tshome.server.domain.TRoom">
+			<id>1</id>
+			<roomName>1</roomName>
+			<floorId>1</floorId>
+			<description>1</description>
+			<imgUrl>1</imgUrl>
+			<totalRows>1</totalRows>
+			<totalColumns>1</totalColumns>
+			<iconUrl>1</iconUrl>
+		</room>
+	</t_room>
+	
+	<t_scene sql="create">
+		<scene class="com.tiansu.tshome.server.domain.TScene">
+			<id>1</id>
+			<sceneName>1</sceneName>
+			<home>1</home>
+			<icon>1</icon>
+			<description>1</description>
+		</scene>
+	</t_scene>
+	
+	<t_scene_hard sql="create">
+		<scene_hard class="com.tiansu.tshome.server.domain.TSceneHard">
+			<id>1</id>
+			<scene>1</scene>
+			<hardsceneId>1</hardsceneId>
+		</scene_hard>
+	</t_scene_hard>
+	
+	<t_scene_knx sql="create">
+		<scene_knx class="com.tiansu.tshome.server.domain.TSceneKnx">
+			<id>1</id>
+			<knxgroup>1</knxgroup>
+			<knxvalue>1</knxvalue>
+			<scene>1</scene>
+		</scene_knx>
+	</t_scene_knx>
+	
+	<t_scene_remote sql="create">
+		<scene_remote class="com.tiansu.tshome.server.domain.TSceneRemote">
+			<id>1</id>
+			<uniquecode>1</uniquecode>
+			<keyboardId>1</keyboardId>
+			<keyId>1</keyId>
+			<scene>1</scene>
+		</scene_remote>
+	</t_scene_remote>
+	
+	<t_scene_serial sql="create">
+		<scene_serial class="com.tiansu.tshome.server.domain.TSceneSerial">
+			<id>1</id>
+			<scene>1</scene>
+			<serialboardId>1</serialboardId>
+			<serialKeyId>1</serialKeyId>
+			<datagram>1</datagram>
+		</scene_serial>
+	</t_scene_serial>
+	
+	<t_serial_board sql="create">
+		<serial_board class="com.tiansu.tshome.server.domain.TSerialBoard">
+			<id>1</id>
+			<device>1</device>
+			<description>1</description>
+			<is_self>1</is_self>
+			<totalRows>1</totalRows>
+			<totalColumns>1</totalColumns>
+		</serial_board>
+	</t_serial_board>
+	
+	<t_serial_key sql="create">
+		<serial_key class="com.tiansu.tshome.server.domain.TSerialKey">
+			<id>1</id>
+			<key_function>1</key_function>
+			<imgUrl>1</imgUrl>
+			<serialboardId>1</serialboardId>
+			<functionCode>1</functionCode>
+			<startRow>1</startRow>
+			<startColumn>1</startColumn>
+			<rowCount>1</rowCount>
+			<columnCount>1</columnCount>
+		</serial_key>
+	</t_serial_key>	
+	
+	<t_user sql="create">
+		<user class="com.tiansu.tshome.server.domain.TUser">
+			<id>1</id>
+			<userName>1</userName>
+			<pwd>1</pwd>
+			<userType>1</userType>
+			<mobilephone>1</mobilephone>
+			<email>1</email>
+			<registerTime>1</registerTime>
+			<lastLoginTime>1</lastLoginTime>
+			<lastLoginIP>1</lastLoginIP>
+			<autoLogin>1</autoLogin>
+			<description>1</description>
+			<home>1</home>
+		</user>
+	</t_user>
+	
+	<t_zone sql="create">
+		<zone class="com.tiansu.tshome.server.domain.TZone">
+			<id>1</id>
+			<zoneName>1</zoneName>
+			<zoneId>1</zoneId>
+		</zone>
+	</t_zone>
+	
+</home>

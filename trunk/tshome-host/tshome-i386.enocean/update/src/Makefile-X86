@@ -1,0 +1,15 @@
+#build upd
+X86_CC=gcc
+TS_INCLUDE=-I/opt/tshome-host/include 
+TS_LIB=-L/opt/tshome-host/lib
+OBJ_CONF=conf
+OBJ_DOWNLOAD=download
+
+all:
+	${X86_CC} -o ${OBJ_DOWNLOAD} download.c -lcurl  ${TS_INCLUDE} ${TS_LIB} -lts_log_tools
+	${X86_CC} -Wall -o ${OBJ_CONF} conf.c ${TS_INCLUDE} ${TS_LIB} -lts_db_tools -lts_encode -lsqlite3 -lcrypto -lxml2 -lcurl -lts_log_tools -lts_log_tools
+
+clean:
+	rm -rf ${OBJ_CONF} ${OBJ_DOWNLOAD}
+
+

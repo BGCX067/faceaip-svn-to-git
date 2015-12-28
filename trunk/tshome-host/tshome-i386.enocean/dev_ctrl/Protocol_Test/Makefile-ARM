@@ -1,0 +1,38 @@
+ARM_GCC_PATH = /usr/local/arm/4.3.2/bin
+CC = ${ARM_GCC_PATH}/arm-linux-gcc
+AR = ${ARM_GCC_PATH}/arm-linux-ar
+ARM_LIB = /usr/local/arm/4.3.2/lib
+ARM_INC = /usr/local/arm/4.3.2/include
+
+MAIN_PATH = /opt/tshome-host
+COMMON_PATH = ${MAIN_PATH}/include
+SOURCE_PATH = ./src
+
+DEV_LIB_PATH = ${MAIN_PATH}/lib/dev_ctrl
+DEV_LIB_NAME = GatewayManager
+
+INCLUDE = -I${COMMON_PATH}
+
+CFLAGS = -Wall -g3 $(INCLUDE)
+CPPFLAGS = $(CFLAGS)
+
+STATIC_LIBS = -L$(DEV_LIB_PATH) -l$(DEV_LIB_NAME) -ldl
+DYNAMIC_LIBS = -ldl
+
+PROGS = test
+PROGS_S = test-s
+
+all:	$(PROGS)
+test-d: $(PROGS)
+
+.c.o:
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+test: $(SOURCE_PATH)/Protocol_Test.o
+	$(CC) -o $@  $^ $(DYNAMIC_LIBS)
+
+test-s: $(SOURCE_PATH)/Protocol_Test.o
+	$(CC) -o $@  $^ $(STATIC_LIBS)
+
+clean:
+	rm -rf $(PROGS) $(PROGS_S) $(SOURCE_PATH)/*.o

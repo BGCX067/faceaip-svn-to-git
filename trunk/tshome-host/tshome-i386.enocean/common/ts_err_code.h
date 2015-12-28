@@ -1,0 +1,109 @@
+/*
+ * ts_err_code.h
+ *
+ *  Created on: 2012-2-6
+ *      Author: pangt
+ */
+
+#ifndef TS_ERR_CODE_H_
+#define TS_ERR_CODE_H_
+
+#define SUCCESS								0
+#define FAILED								-1
+
+//databases [1, 50]
+#define ERR_DB_OPEN							1
+#define ERR_DB_CLOSE						2
+#define ERR_DB_SYNCHRONIZE					3
+#define ERR_DB_QUERY						4
+#define ERR_DB_CREATE_TABLE					5
+#define ERR_DB_INSERT						6
+#define ERR_DB_DELETE						7
+#define ERR_DB_UPDATE						8
+#define ERR_DB_DROP_TABLE					9
+#define ERR_DB_GATEWAY_INTERFACE_CONN		10 //The gateway can't connect with the interface
+#define ERR_DB_GET_GATEWAY_INFO				11
+#define ERR_DB_GET_INTERFACE_INFO			12
+#define ERR_DB_PASSAGEWAY_EXIT				13
+#define ERR_DB_USER_NOT_EXIT				14
+#define ERR_DB_NO_RECORDS					15
+#define ERR_DB_DEVICE_INFO					16
+#define ERR_DB_XML_PARSE					17
+#define ERR_DB_SYSTEM						18
+
+//WEB [51, 100]
+#define ERR_WEB_INTER_TYPE					51
+#define ERR_WEB_IP_FORMAT_ERR				52
+#define ERR_WEB_PROT_FORMAT_ERR				53
+#define ERR_WEB_USER_NOT_EXITS				54
+#define ERR_WEB_PASSWD						55
+#define ERR_WEB_PARSE						56
+
+//protrol [101,150]
+#define ERR_PROTROL_NO_CONNECT				101
+#define ERR_PROTROL_NO_GATEWAY				102
+#define ERR_PROTROL_NO_DEVICE				103
+#define ERR_PROTROL_TIMEOUT					104
+#define ERR_PROTROL_GATEWAY_EXIST			105
+#define ERR_PROTROL_SEARCH_FAILED			106
+#define ERR_PROTROL_CONNECT_FAILED			107
+#define ERR_PROTROL_GATEWAY_DISCONNECTED	108
+#define ERR_PROTROL_MESSAGE_LEN				109
+#define ERR_PROTROL_MESSAGE_ERR				110
+#define ERR_PROTROL_NOT_SUPPORT				111
+#define ERR_PROTROL_SO_FAILED   			112
+#define ERR_PROTROL_COM_SEND   				113
+#define ERR_PROTROL_COM_ID	    			114
+#define ERR_PROTROL_COM_PRO_FUN				115
+#define ERR_PROTROL_PARAMETERS  			116
+#define ERR_PROTROL_IR_OPEN 				117
+#define ERR_PROTROL_IR_CONF					118
+#define ERR_PROTROL_IR_WRITE				119
+#define ERR_PROTROL_IR_LEARN_TIMEOUT		120
+#define ERR_PROTROL_IR_LEARN_JAM			121
+#define ERR_PROTROL_IR_LEARN_LEN			122
+#define ERR_PROTROL_LIST_IS_FULL			123
+#define ERR_PROTROL_INNER_FAILED			124
+#define ERR_PROTROL_DATAPOINT_NOT_SUPPORT	125
+#define ERR_PROTROL_CONFIGURE_MAXVALUE		126
+#define ERR_PROTROL_CONFIGURE_DATAPOINT		127
+
+// (do not modified) according to KNXException.h
+//------------------start-------------------
+#define ERR_PROTROL_KNX_UNKNOWN				130
+#define ERR_PROTROL_KNX_INPUT				131
+#define ERR_PROTROL_KNX_MULTIINIT			132
+#define ERR_PROTROL_KNX_MULTITHREAD			133
+#define ERR_PROTROL_KNX_UNIINIT				134
+#define ERR_PROTROL_KNX_UNITHREAD			135
+#define ERR_PROTROL_KNX_DPTCONVERSION		136
+#define ERR_PROTROL_KNX_BUSY				137
+#define ERR_PROTROL_KNX_INNER				138
+#define ERR_PROTROL_KNX_SENDINIT			139
+#define ERR_PROTROL_KNX_HANDLEINIT			140
+#define ERR_PROTROL_KNX_SEND				141
+#define ERR_PROTROL_KNX_RECV				142
+#define ERR_PROTROL_KNX_CALLBACK			143
+#define ERR_PROTROL_KNX_TIMEOUT				144
+#define ERR_PROTROL_KNX_BREATHTHREAD		145
+#define ERR_PROTROL_KNX_DISCONNECTED		146
+#define ERR_PROTROL_KNX_GATEWAYSTATUS		147
+#define ERR_PROTROL_KNX_OTHER				148
+//-------------------end--------------------
+
+
+// Transfer data error [151, 200]
+#define ERR_NET_NO_LOGIN					151
+#define ERR_NET_NO_USER						152
+#define ERR_NET_DATAPARSE_ERROR				153
+#define ERR_NET_NO_HOST_INFO				154
+#define ERR_NET_PROTOCOL_NO_MATCH			155
+#define ERR_NET_CONTROL_NO_PERMISION		156
+#define ERR_NET_NO_TERMINAL_INFO			157
+#define ERR_NET_HOST_NET_HAS_STOPED			158
+#define ERR_NET_RE_LOGIN					159
+
+
+
+#endif /* TS_ERR_CODE_H_ */
+

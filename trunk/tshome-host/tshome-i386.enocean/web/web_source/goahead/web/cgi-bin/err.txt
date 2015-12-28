@@ -1,0 +1,287 @@
+Content-type: text/html
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-Transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TSHome主机</title>
+<meta name="keywords" content="智能,家居,主机,系统,TSHome" />
+<link rel="stylesheet" href="../css/main.css"  type="text/css"/>
+<script type="text/javascript" language="javascript" src="../js/jquery-1.7.1.js"></script>
+<!--<script type="text/javascript" language="javascript" src="../js/infrared_device_pathway.js"></script>-->
+<script type="text/javascript" language="javascript" >
+function parseResponse(request) {
+	if (request.readyState == 4) {
+		if (request.status == 200 || request.status == 304) {
+		}
+	}
+}
+
+function getHTTPObject() {
+	var xhr = false;
+	if (window.XMLHttpRequest) {
+		xhr = new XMLHttpRequest();
+	} else if (window.ActiveXObject) {
+		try {
+			xhr = new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try {
+				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e) {
+				xhr = false;
+			}
+		}
+	}
+	return xhr;
+}
+/**
+ *红外设备通路配置
+ */
+//求数组的最大值
+Array.prototype.max = function() {  
+ var max = this[0];
+ var len = this.length; 
+ for (var i = 1; i < len; i++){
+  if (parseInt(this[i]) > max) { 
+   max = this[i];   
+  } 
+ }   
+ return max;
+}
+var infrared_device_delete_no=0;//声明设备连接通路删除按钮编号
+//修改确定删除操作方法
+function infrared_device_oprate(){
+	//下拉列表选择
+	$(".infrared_device_delete_"+infrared_device_delete_no).parent().parent().find(".infrared_device_pathway_select").mouseover(function(){
+		$(this).find("select.infrared_device_pathway_second").show();
+	});
+	$(".infrared_device_delete_"+infrared_device_delete_no).parent().parent().find(".infrared_device_pathway_select").mouseout(function(){
+		$(this).find("select.infrared_device_pathway_second").hide();
+	});
+	$(".infrared_device_delete_"+infrared_device_delete_no).parent().parent().find("select.infrared_device_pathway_second").click(function(){
+		var select_value="";
+		$(this).find("option").each(function(i,val){
+			if($(this).attr("selected")=="selected"){
+				select_value=select_value+$(this).html();
+			}
+		});
+		$(this).parent().find("input").val(select_value);
+		$(this).hide();
+	});
+	$(".infrared_device_delete_"+infrared_device_delete_no).parent().parent().find("input#switch_on").click(function(){
+		var id = $(this).parent().parent().parent().find('span#host_infr_id').html();
+		on_off('type=3&value='+id+'&on_off=1');
+	});
+	$(".infrared_device_delete_"+infrared_device_delete_no).parent().parent().find("input#switch_off").click(function(){
+		var id = $(this).parent().parent().parent().find('span#host_infr_id').html();
+		on_off('type=3&value='+id+'&on_off=2');
+	});
+function on_off(data) {
+	var request = getHTTPObject();
+	if (request) {
+		request.onreadystatechange = function() {
+			parseResponse(request);
+		};
+		request.open("POST", "../cgi-bin/on_off.html", true);
+		request.setRequestHeader("Content-Type",
+				"application/x-www-form-urlencoded");
+		request.send(data);
+		return true;
+	} else {
+		return false;
+	}
+}
+
+	//修改
+	$(".infrared_device_delete_"+infrared_device_delete_no).parent().parent().find("input.revise_btn").click(function(){
+		document.getElementById("save_btn").style.display="none";
+		//显示隐藏
+		$(this).parent().parent().find("span.infrared_device_pathway_no").hide();
+		$(this).hide();
+		$(this).parent().parent().find(".infrared_device_pathway_select").show();
+		$(this).parent().parent().find("input.ok_btn").show();
+		//赋值
+		$(this).parent().parent().find(".infrared_device_pathway_select input").val($(this).parent().parent().find("span.infrared_device_pathway_no").html());
+	});
+	//确定
+	$(".infrared_device_delete_"+infrared_device_delete_no).parent().parent().find("input.ok_btn").click(function(){
+		$('#save_btn').show();
+		//显示隐藏
+		$(this).parent().parent().find(".infrared_device_pathway_select").hide();
+		$(this).hide();
+		$(this).parent().parent().find("span.infrared_device_name").show();
+		$(this).parent().parent().find("span.infrared_device_pathway_no").show();
+		$(this).parent().parent().find("input.revise_btn").show();
+		//赋值
+		$(this).parent().parent().find("span.infrared_device_pathway_no").html($(this).parent().parent().find(".infrared_device_pathway_select input").val());
+		if($(this).parent().parent().find("input.infrared_device_name_revise").css("display")=="none"){
+		}else{
+			$(this).parent().parent().find("input.infrared_device_name_revise").hide();
+			$(this).parent().parent().find("span.infrared_device_name").html($(this).parent().parent().find("input.infrared_device_name_revise").val());
+		}
+	});
+	//删除
+	$(".infrared_device_delete_"+infrared_device_delete_no).parent().parent().find("input.delete_btn").click(function(){
+		$(this).parent().parent().remove();
+		//id
+		//var id=$(this).parent().parent().find("span.infrared_device_id").html();
+	});
+}
+//生成已有列表 
+function infrared_device_list(parameter){
+	if(parameter != null){
+		for(i=0;i<parameter.length;i++){
+			var id=parameter[i].id;
+			var infrared_device_name=parameter[i].infrared_device_name;
+			var infrared_device_pathway_no=parameter[i].infrared_device_pathway_no;
+			var infrared_device_pathway_select=parameter[i].infrared_device_pathway_select;
+			var on_off=parameter[i].on_off;
+			if(1==on_off) {
+				$(".infrared_device_list table.table_serial_port").append('<tr><td width="41"><span  id="host_infr_id" class="infrared_device_id">'+id+'</span></td><td width="250" align="center"><span class="infrared_device_name">'+infrared_device_name+'</span></td><td width="228" align="center"><span class="infrared_device_pathway_no">'+infrared_device_pathway_no+'</span><div class="infrared_device_pathway_select" style="display:none"><input type="text" value=""/><select size="5" class="infrared_device_pathway_second" style="display:none;z-index:'+(9999-(++infrared_device_delete_no))+'"></select></div></td><td width="83" align="center"><input type="button" class="revise_btn"/><input type="button" class="ok_btn" style="display:none"/><input type="button" class="delete_btn infrared_device_delete_'+infrared_device_delete_no+'" style="display:none"/></td><td width="110" align="center"><input id="switch_on" name="infrared_device_'+infrared_device_delete_no+'" type="radio" value="" checked /> 打开 <input id="switch_off" name="infrared_device_'+infrared_device_delete_no+'" type="radio" value=""/> 关闭</td></tr>');
+			} else {
+				$(".infrared_device_list table.table_serial_port").append('<tr><td width="41"><span  id="host_infr_id" class="infrared_device_id">'+id+'</span></td><td width="250" align="center"><span class="infrared_device_name">'+infrared_device_name+'</span></td><td width="228" align="center"><span class="infrared_device_pathway_no">'+infrared_device_pathway_no+'</span><div class="infrared_device_pathway_select" style="display:none"><input type="text" value=""/><select size="5" class="infrared_device_pathway_second" style="display:none;z-index:'+(9999-(++infrared_device_delete_no))+'"></select></div></td><td width="83" align="center"><input type="button" class="revise_btn"/><input type="button" class="ok_btn" style="display:none"/><input type="button" class="delete_btn infrared_device_delete_'+infrared_device_delete_no+'" style="display:none"/></td><td width="110" align="center"><input id="switch_on" name="infrared_device_'+infrared_device_delete_no+'" type="radio" value=""  /> 打开 <input id="switch_off" name="infrared_device_'+infrared_device_delete_no+'" type="radio" value="" checked/> 关闭</td></tr>');
+			} 
+			//下拉列表生成
+			for(j=0;j<infrared_device_pathway_select.length;j++){
+				$(".infrared_device_delete_"+infrared_device_delete_no).parent().parent().find("select.infrared_device_pathway_second").append('<option>'+infrared_device_pathway_select[j]+'</option>');
+			}
+			//修改确定删除操作方法
+			infrared_device_oprate();
+		}
+	}
+}
+//从数据库取出数据，列出已有列表
+window.onload = function (){
+	var parameter;
+	infrared_device_list(parameter);
+}
+
+$(function(){
+	//新增按钮
+	$("input.new_add_btn").click(function(){
+		//id为最大值加1
+		var infrared_device_id;
+		var num=[];
+		$(".infrared_device_list table.table_serial_port span.infrared_device_id").each(function(i,val){
+			num[i]=$(this).html();
+		});
+		if(num!=null){
+			infrared_device_id=parseInt(num.max())+1;
+		}else{
+			infrared_device_id=1;
+		}
+		if(num == ""){
+			infrared_device_id=1;
+		}
+
+		$(".infrared_device_list table.table_serial_port").append('<tr><td width="41"><span class="infrared_device_id">'+infrared_device_id+'</span></td><td width="250" align="center"><span class="infrared_device_name" style="display:none"></span><input type="text" class="infrared_device_name_revise"/></td><td width="228" align="center"><span class="infrared_device_pathway_no" style="display:none"></span><div class="infrared_device_pathway_select"><input type="text" value=""/><select size="5" class="infrared_device_pathway_second" style="display:none;z-index:'+(9999-(++infrared_device_delete_no))+'"></select></div></td><td width="83" align="center"><input type="button" class="revise_btn" style="display:none"/><input type="button" class="ok_btn"/><input type="button" class="delete_btn infrared_device_delete_'+infrared_device_delete_no+'" style="display:none"/></td><td width="110" align="center"><input name="infrared_device_'+infrared_device_delete_no+'" type="radio" value="" checked /> 打开 <input name="infrared_device_'+infrared_device_delete_no+'" type="radio" value=""/> 关闭</td></tr>');
+		var parameter=[{'id':'1','infrared_device_name':'快进','infrared_device_pathway_no':'1','infrared_device_pathway_select':['1','2','3','4','5']},{'id':'2','infrared_device_name':'快进','infrared_device_pathway_no':'1','infrared_device_pathway_select':['1','2','3','4','5']}];
+		var infrared_device_pathway_select=parameter[0].infrared_device_pathway_select;
+		//下拉列表生成
+		for(j=0;j<infrared_device_pathway_select.length;j++){
+			$(".infrared_device_delete_"+infrared_device_delete_no).parent().parent().find("select.infrared_device_pathway_second").append('<option>'+infrared_device_pathway_select[j]+'</option>');
+		}
+		//修改确定删除操作方法
+		infrared_device_oprate();
+	});
+	//保存按钮
+	$("input.save_btn").click(function(){
+	document.getElementById('save_btn').style.display='none'
+		//列表的保存
+		var infrared_device_infos='';
+		$(".infrared_device_list table.table_serial_port span.infrared_device_id").each(function(i,val){
+			var id=$(this).html();//id
+			var infrared_device_name=$(this).parent().parent().find("span.infrared_device_name").html();
+			var infrared_device_pathway_no=$(this).parent().parent().find("span.infrared_device_pathway_no").html();
+			infrared_device_infos+=id+','+infrared_device_pathway_no+';';
+		});
+		var info_len = infrared_device_infos.length;
+		var send_all = 'info_len='+info_len+'&info='+infrared_device_infos;
+		set_infrared_channel(send_all);
+		});
+	});
+function set_infrared_channel(data) {
+	var request = getHTTPObject();
+	if (request) {
+		request.onreadystatechange = function() {
+			parseResponse(request);
+		};
+		request.open("POST", "../cgi-bin/set_channel.html", true);
+		request.setRequestHeader("Content-Type",
+				"application/x-www-form-urlencoded");
+		request.send(data);
+		return true;
+	} else {
+		return false;
+	}
+}
+
+</script>
+</head>
+<body>
+<!--主体 start-->
+<div class="containerbackground">
+	<div class="container_inner_back">
+		<div class="container">
+			<!--页头 start-->
+			<div class="head">
+				<span><a href="#"><img src="../images//logo_index.jpg" width="300" height="90"/></a></span>
+			</div>
+			<!--页头 end-->
+			<!--主体 start-->
+			<div class="center">
+				<!--导航 start-->
+				<div class="navigation">
+					<ul>
+						<li><a href="basic_control.html">基本控制</a></li>
+						<li><a href="home_serial_port.html">主机串口信息</a></li>
+						<li><a href="pathway_info.html">通路信息维护</a></li>
+						<li><a href="device_link_access.html">串口设备连接主机信息维护</a></li>
+						<li class="selected"><a href="infrared_device_pathway.html">红外设备通路配置</a></li>
+						<li><a href="log.html">日志信息</a></li>
+					</ul>
+				</div>
+				<!--导航 end-->
+				<!--内容 start-->
+				<div class="content">
+					<!--表格 start-->
+					<div class="infrared_device_pathway_info">
+						<!--标题 start-->
+						<div class="title">
+							<table width="718" border="0" cellpadding="0" cellspacing="0" class="table_serial_port">
+							  <tr>
+								<th width="41">ID</th>
+								<th width="250">红外设备名称</th>
+								<th width="228">通路号</th>
+								<th width="83">操作</th>
+								<th width="110">开关</th>
+							  </tr>
+							</table>
+						</div>
+						<!--标题 end-->
+						<!--内容 start-->
+						<div class="infrared_device_list">
+							<table width="718" border="0" cellpadding="0" cellspacing="0" class="table_serial_port" style="border-top:0px">
+							</table>
+						</div>
+						<!--内容 end-->
+					</div>
+					<!--表格 end-->
+					<!--按钮 start-->
+					<div class="button"><input id='save_btn' type="button" class="save_btn" style='display:none'/></div>
+					<!--按钮 end-->
+				</div>
+				<!--内容 end-->
+			</div>
+			<!--主体 end-->
+		</div>
+	</div>
+</div>
+<!--主体 end-->
+<!--底部 start-->
+<div class="footerbackground">
+	<div class="footer">南京天溯自动化-TSHome All Right Reserved!</div>
+</div>
+<!--底部 end-->
+</body>
+</html>

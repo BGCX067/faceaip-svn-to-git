@@ -1,0 +1,30 @@
+
+COMMON_PATH	= /opt/tshome-host/include
+COM_PATH	= ../ComProtocolManager
+
+INCLUDE		= -I$(COMMON_PATH) -I$(COM_PATH)
+
+CFLAGS		= -Wall -g3 $(INCLUDE)
+CPPFLAGS	= $(CFLAGS)
+
+MY_O		= Backaudio_A61L.o $(COM_PATH)/IrcProtocolIface.o
+
+PROGS		= libBackaudio_A61L.so
+PROGS_A		= libBackaudio_A61L.a
+
+all:		$(PROGS)
+so:		$(PROGS)
+a:		$(PROGS_A)
+
+.cpp.o:
+	g++ $(CPPFLAGS) -o $@ -c $<
+
+libBackaudio_A61L.so: $(MY_O)
+	g++ -shared -o $@ $(INCLUDE) $^
+
+libBackaudio_A61L.a: $(MY_O)
+	ar cur $@ $^
+
+clean:
+	rm -rf *.o $(COM_PATH)/*.o *.so *.a
+

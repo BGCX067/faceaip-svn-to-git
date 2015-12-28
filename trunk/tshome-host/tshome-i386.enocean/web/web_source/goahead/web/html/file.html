@@ -1,0 +1,42 @@
+ 
+<html>
+<head>
+<script>
+function getFullPath(obj)
+{
+    if(obj)
+    {
+        //ie
+        if (window.navigator.userAgent.indexOf("MSIE")>=1)
+        {
+            obj.select();
+            return document.selection.createRange().text;
+        }
+        //firefox
+        else if(window.navigator.userAgent.indexOf("Firefox")>=1)
+        {
+            if(obj.files)
+            {
+                try
+                {
+                    netscape.security.PrivilegeManager.enablePrivilege( 'UniversalFileRead' )
+                }
+                catch (err) {
+                    //need to set signed.applets.codebase_principal_support to true
+                }
+                return obj.value;
+            }
+            return obj.value;
+        }
+        return obj.value;
+    }
+}
+</script>
+</head>
+<body>
+    <form action="report" method="post" >
+     文件<input type="file" name="reportPath"  onchange="document.getElementById('reportName').value=getFullPath(this);"><br>
+       <input type="text" name="reportName" id="reportName" value=""><br>
+    </form>
+</body>
+</html>

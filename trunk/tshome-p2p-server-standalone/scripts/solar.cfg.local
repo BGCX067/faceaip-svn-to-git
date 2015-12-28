@@ -1,0 +1,65 @@
+{
+   "DB" : [
+      {
+         "Database" : "remoteserver",
+         "Host" : "localhost",
+         "Passwd" : "tshomedb0607",
+         "Port" : 0,
+         "UserName" : "root"
+      }
+   ],
+   "General" : [
+      {
+         "LogFileName" : "tshome-server.log",
+         "LogFilePath" : ".\/logs",
+         "MachineName" : "tshome-p2p-server",
+         "No" : 8,
+         "ProductID" : "987654321",
+         "SerialNumber" : "08620543482132792993272592000",
+         "Vendor" : "tiansu",
+         "Version" : "v 1.1.0",
+         "maxLogFile" : 5,
+         "maxLogSize" : 5242880,
+         "portConsoleOverTcp" : 19023
+      }
+   ],
+   "IPC" : [
+      {
+         "Port" : "11113"
+      }
+   ],
+   "P2P" : [
+      {
+         "Port" : "34400",
+         "maxClient" : 133120,
+         "maxUdpPort" : 65535,
+         "minUdpPort" : 49152
+      }
+   ],
+   "SMARTHOME_JSTELECOM" : [
+      {
+         "AuthPassword" : "111111",
+         "AuthUser" : "tiansu",
+         "ControlDeviceServerPort" : 60080,
+         "CtrlDeviceStateServerPort" : 60080,
+         "DeviceStateList" : 60080,
+         "Host" : "192.168.10.127",
+         "Port" : 80,
+         "ProductID" : "61",
+         "ProductName" : "TS-Home-Server-JSTelecom@Nanjing Tiansu Automation Control System Co., Ltd",
+         "RegisterServerPort" : 60080,
+         "ReportDeviceConfigParamServerPort" : 60080,
+         "URLRegisterServerHost" : "http:\/\/192.168.10.127\/SmartHomeTiansu\/",
+         "controlDevice" : "\/SmartHomeTiansu\/controlDevice",
+         "getCtrlDeviceState" : "\/SmartHomeTiansu\/getCtrlDeviceState",
+         "getDeviceStateList" : "\/SmartHomeTiansu\/getDeviceStateList",
+         "initDeviceConfigParam" : "\/TSRemote\/smarthome\/initDeviceConfigParam.c",
+         "register" : "\/SmartHomeTiansu\/register",
+         "reportAlarm" : "\/TSRemote\/smarthome\/reportAlarm.c",
+         "reportCtrlDeviceState" : "\/TSRemote\/smarthome\/reportCtrlDeviceState.c",
+         "reportDeviceStateList" : "\/TSRemote\/smarthome\/reportDeviceStateList.c",
+         "requestAuth" : "\/TSRemote\/smarthome\/requestAuth.c",
+         "requestReportDeviceConfigParam" : "\/SmartHomeTiansu\/requestReportDeviceConfigParam"
+      }
+   ]
+}

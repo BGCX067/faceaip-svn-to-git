@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document common */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body { color:#000;  font-size:12px;  font-family:"微软雅黑","宋体",arial; /*text-align:center; */}
+textarea { font-size:12px; }
+h1, h2, h3, h4, h5, h6 { font-size:1em; font-weight:normal }
+ul, dl, ol, li { list-style:none; }
+em { font-style:normal }
+img { border:none; }
+p { margin:0 0 1em 0 }
+a { text-decoration:none; color:#000; }
+a:hover { text-decoration:underline }
+.clear { height:0px; line-height:0px; font-size:0px; clear:both; overflow:hidden; }
+.left{ float:left;}
+.right{ float:right;}

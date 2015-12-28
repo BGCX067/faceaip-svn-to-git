@@ -1,0 +1,18 @@
+ARM_GCC_PATH = /usr/local/arm/4.3.2/bin
+CC = ${ARM_GCC_PATH}/arm-linux-gcc
+AR = ${ARM_GCC_PATH}/arm-linux-ar
+SSL_INC = /usr/local/arm/4.3.2/include
+OBJS=aes_tools.o rsa_tools.o md5_tools.o 
+LIB=libts_encode.a  
+TS_INC=-I/opt/tshome-host/include/
+
+$(LIB) : ${OBJS}
+	${AR} cr libts_encode.a ${OBJS}
+aes_tools.o :
+	${CC} -Wall -c aes_tools.c -I${SSL_INC} ${TS_INC}
+rsa_tools.o :
+	${CC} -Wall -c rsa_tools.c -I${SSL_INC} ${TS_INC}
+md5_tools.o :
+	${CC} -Wall -c md5_tools.c -I${SSL_INC} ${TS_INC}
+clean:
+	rm -f $(OBJS) $(LIB)

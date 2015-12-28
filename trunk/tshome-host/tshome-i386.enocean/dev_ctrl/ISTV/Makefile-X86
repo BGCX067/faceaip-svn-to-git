@@ -1,0 +1,30 @@
+
+COMMON_PATH	= /opt/tshome-host/include
+COM_PATH	= ../ComProtocolManager
+
+INCLUDE		= -I$(COMMON_PATH) -I$(COM_PATH)
+
+CFLAGS		= -Wall -g3 $(INCLUDE)
+CPPFLAGS	= $(CFLAGS)
+
+MY_O		= ISTV.o $(COM_PATH)/IrcProtocolIface.o
+
+PROGS		= libISTV.so
+PROGS_A		= libISTV.a
+
+all:		$(PROGS)
+so:		$(PROGS)
+a:		$(PROGS_A)
+
+.cpp.o:
+	g++ $(CPPFLAGS) -o $@ -c $<
+
+libISTV.so: $(MY_O)
+	g++ -shared -o $@ $(INCLUDE) $^
+
+libISTV.a: $(MY_O)
+	ar cur $@ $^
+
+clean:
+	rm -rf *.o $(COM_PATH)/*.o *.so *.a
+

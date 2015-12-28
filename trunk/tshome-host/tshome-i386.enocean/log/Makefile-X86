@@ -1,0 +1,10 @@
+objs=ts_log_tools.o
+
+all : $(objs)
+	ar cr libts_log_tools.a $(objs)
+	gcc -Wall -o ts_log ts_log.c $(objs)
+#	gcc -o ts_log1 ts_log_1.c $(objs)
+objs :
+	gcc -Wall -c ts_log_tools.c
+clean:
+	rm -f $(objs) *.a ts_log

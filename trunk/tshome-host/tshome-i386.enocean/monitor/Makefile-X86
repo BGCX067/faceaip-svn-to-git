@@ -1,0 +1,12 @@
+CC = gcc
+INC_PATH = /opt/tshome-host/include
+
+LIB_DB_PATH = /opt/tshome-host/lib
+LIB_DB_NAME = ts_db_tools -lts_log_tools
+
+all:
+	${CC} -o ts_monitor host_monitor.c -I${INC_PATH} -l$(LIB_DB_NAME) -lsqlite3 -L${LIB_DB_PATH}
+	${CC} -o ts_web_monitor web_monitor.c -I${INC_PATH} -L${LIB_DB_PATH} -l$(LIB_DB_NAME)
+	${CC} -o ts_time_monitor monitor_time.c
+clean:
+	rm -f *.o ts_monitor ts_web_monitor ts_time_monitor

@@ -1,0 +1,18 @@
+ARM_GCC_PATH = /usr/local/arm/4.3.2/bin
+CC = ${ARM_GCC_PATH}/arm-linux-gcc -D __ARM
+
+OPT_LIB = /opt/tshome-host/lib
+OPT_LIB_NAME = -lts_db_tools -lts_log_tools
+INCLUDE_PATH=/usr/local/arm/4.3.2/include
+SQLITE_PATH=/usr/local/arm/4.3.2/lib
+OPT_INCLUDE=/opt/tshome-host/include
+
+all:keep_dog.o
+	${CC} -o ts_monitor host_monitor.c -I${OPT_INCLUDE} -L${SQLITE_PATH} -lsqlite3 $(OPT_LIB_NAME) -I${INCLUDE_PATH} -lsqlite3 -L${OPT_LIB}
+	${CC} -o ts_web_monitor web_monitor.c -I${OPT_INCLUDE} -lpthread -L${OPT_LIB} -lts_log_tools
+	${CC} -o ts_time_monitor monitor_time.c
+
+keep_dog:
+	${CC} -o keep_dog.c
+clean:
+	rm -f *.o ts_monitor ts_web_monitor ts_time_monitor

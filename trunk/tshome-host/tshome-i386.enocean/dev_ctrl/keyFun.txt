@@ -1,0 +1,64 @@
+﻿// ok.
+'1', 'KEY_OPEN', '开', NULL, NULL
+'2', 'KEY_CLOSE', '关', NULL, NULL
+'12', 'KEY_PREVIOUS', '上一个', NULL, NULL
+'13', 'KEY_NEXT', '下一个', NULL, NULL
+'16', 'KEY_PLAY', '播放', NULL, NULL
+'17', 'KEY_PAUSE', '暂停', NULL, NULL
+'18', 'KEY_STOP', '停止', NULL, NULL
+'3', 'KEY_TUNEUP', '音量调高', NULL, NULL
+'4', 'KEY_TUNEDOWN', '音量调低', NULL, NULL
+'53', 'KEY_TUNEUP_BASS', '音量调高-低音', NULL, NULL
+'54', 'KEY_TUNEDOWN_BASS', '音量调低-低音', NULL, NULL
+'55', 'KEY_TUNEUP_TREBLE', '音量调高-高音', NULL, NULL
+'56', 'KEY_TUNEDOWN_TREBLE', '音量调低-高音', NULL, NULL
+'20', 'KEY_SOURCE_MP3', '输入源-MP3', NULL, NULL
+'21', 'KEY_SOURCE_TNR', '输入源-TNR', NULL, NULL
+'22', 'KEY_SOURCE_DVD', '输入源-DVD', NULL, NULL
+'23', 'KEY_SOURCE_PC', '输入源-PC', NULL, NULL
+'24', 'KEY_SOURCE_PC2', '输入源-PC2', NULL, NULL
+'25', 'KEY_SOURCE_TV', '输入源-TV', NULL, NULL
+'26', 'KEY_SOURCE_AUX', '输入源-AUX', NULL, NULL
+'27', 'KEY_SOURCE_IPOD', '输入源-IPOD', NULL, NULL
+'28', 'KEY_SOURCE_AM', '输入源-AM', NULL, NULL
+'29', 'KEY_SOURCE_FM', '输入源-FM', NULL, NULL
+'30', 'KEY_SOURCE_DVI_HDMI', '输入源-DVI/HDMI', NULL, NULL
+'31', 'KEY_SOURCE_HDMI', '输入源-HDMI', NULL, NULL
+'32', 'KEY_SOURCE_VIDEO', '输入源-VIDEO', NULL, NULL
+'33', 'KEY_SOURCE_S_VIDEO', '输入源-S-VIDEO', NULL, NULL
+'34', 'KEY_SOURCE_BNC', '输入源-BNC', NULL, NULL
+'47', 'KEY_EQ_NORMAL', '音效-标准', NULL, NULL
+'48', 'KEY_EQ_POP', '音效-流行', NULL, NULL
+'49', 'KEY_EQ_SOFT', '音效-轻音乐', NULL, NULL
+'50', 'KEY_EQ_CLASSIC', '音效-古典', NULL, NULL
+'51', 'KEY_EQ_JAZZ', '音效-爵士', NULL, NULL
+'52', 'KEY_EQ_METAL', '音效-金属', NULL, NULL
+'57', 'KEY_CHANNEL_AM', '频道选择-AM', NULL, NULL
+'58', 'KEY_CHANNEL_FM', '频道选择-FM', NULL, NULL
+
+// haven't
+
+
+// not need support
+'5', 'KEY_UP', '上', NULL, NULL
+'6', 'KEY_DOWN', '下', NULL, NULL
+'7', 'KEY_LEFT', '左', NULL, NULL
+'8', 'KEY_RIGHT', '右', NULL, NULL
+'9', 'KEY_OK', 'OK', NULL, NULL
+'10', 'KEY_BACK', '返回', NULL, NULL
+'11', 'KEY_EXIT', '退出', NULL, NULL
+'14', 'KEY_MENU', '菜单', NULL, NULL
+'15', 'KEY_MUTE', '静音', NULL, NULL
+'19', 'KEY_NUM', '数字键0-9', NULL, NULL
+'35', 'KEY_FORWARD', '快进', NULL, NULL
+'36', 'KEY_BACKWARD', '快退', NULL, NULL
+'37', 'KEY_MODE1', '模式1', NULL, NULL
+'38', 'KEY_MODE2', '模式2', NULL, NULL
+'39', 'KEY_MODE3', '模式3', NULL, NULL
+'40', 'KEY_MODE4', '模式4', NULL, NULL
+'41', 'KEY_MODE5', '模式5', NULL, NULL
+'42', 'KEY_MODE6', '模式6', NULL, NULL
+'43', 'KEY_MODE7', '模式7', NULL, NULL
+'44', 'KEY_MODE8', '模式8', NULL, NULL
+'45', 'KEY_MODE9', '模式9', NULL, NULL
+'46', 'KEY_MODE10', '模式10', NULL, NULL
